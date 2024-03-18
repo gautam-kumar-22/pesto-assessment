@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles/todo.css" />
+
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Task Manager</a>
+            </div>
+            <div onclick="openModal('add', null)" class="navbar-default">
+                <ul class="nav navbar-nav navbar-right add-task-navbar">
+                    <li><a class="navbar-brand">Add Task</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="form-group">
+          <label class="control-label col-sm-offset-2 col-sm-2" for="filter_status">Filter by status</label>
+          <div class="col-sm-6 col-md-4">
+            <select id="filter_status" class="form-control" onchange="filter_status(this)">
+              <option value="">All</option>
+              <option value="to-do">Todo</option>
+              <option value="in-progress">In progress</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+        </div>
+    <div class="container" id="taskListContainer">
+
+    </div>
+
+    <div class="modal fade" id="taskModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body" id="item-modal">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label class="form-label">Task Title</label> <span class="text-danger">*</span>
+                                    <input type="text" onmouseout="validate()" id="tskTitle" class="form-control" placeholder="I want to..." >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Due Date</label> <span class="text-danger">*</span>
+                                    <input type="date" onmouseout="validate()" id="tskDueDate" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tskStatus">Status</label> <span class="text-danger">*</span>
+                                    <select class="form-control" id="tskStatus">
+                                        <option value="to-do">Todo</option>
+                                        <option value="in-progress">In Progress</option>
+                                        <option value="done">Completed</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tskPriority">Priority</label> <span class="text-danger">*</span>
+                                    <select class="form-control" id="tskPriority">
+                                        <option value="high">High</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="low">Low</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tskContent">Task Details</label> <span class="text-danger">*</span>
+                                    <textarea class="form-control" onmouseout="validate()" rows="5" id="tskContent" placeholder="Describe your task here..."></textarea>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="tskCompletedChk">
+                                    <label class="form-check-label" for="tskCompletedChk">Mark As Completed</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="js/todo.js"></script>
+</body>
+</html>
